@@ -1,1 +1,19 @@
-<mat-toolbar color="primary">Freadit</mat-toolbar>
+<mat-toolbar>
+  <span class="header-title"> Freadit</span>
+
+  <mat-form-field floatLabel="never">
+    <mat-select placeholder="Subscriptions" disableRipple>
+      <mat-option value="1">f/cats</mat-option>
+      <mat-option value="2">f/news</mat-option>
+      <mat-option value="3">f/gifs</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <input type="text" />
+  <button>search</button>
+
+  <span class="example-fill-remaining-space"></span>
+  <mat-icon class="example-icon">mail</mat-icon>
+  <mat-icon class="example-icon">create</mat-icon>
+  <mat-icon class="example-icon">person</mat-icon>
+</mat-toolbar>

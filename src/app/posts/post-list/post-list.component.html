@@ -1,7 +1,14 @@
 <mat-accordion id="" *ngIf="posts.length > 0">
     <mat-expansion-panel *ngFor="let post of posts" id="">
       <mat-expansion-panel-header id="">
-        {{post.title}}
+
+        <mat-panel-title>
+          {{post.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{post.user}}
+          {{post.score}}
+        </mat-panel-description>
       </mat-expansion-panel-header>
        <p id="">{{post.content}}</p>
        <mat-action-row id="">

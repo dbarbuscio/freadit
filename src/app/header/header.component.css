@@ -1,0 +1,25 @@
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+mat-icon {
+  padding-left: 5px;
+}
+
+.header-title {
+  padding-right: 10px;
+}
+
+mat-menu {
+  padding-left: 5px;
+  padding-right: 20px;
+}
+
+mat-form-field {
+  padding-left: 10px;
+  padding-right: 20px;
+}
+mat-select {
+  font-size: 15px;
+}

@@ -22,7 +22,7 @@ export class PostCreateComponent {
     if (form.invalid) {
       return;
     }
-    this.postsService.addPost(form.value.title, form.value.user, form.value.score, form.value.content);
+    this.postsService.addPost(form.value.title, form.value.content);
     form.resetForm();
   }
 }
