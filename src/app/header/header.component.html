@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <span class="header-title"> Freadit</span>
+  <span class="header-title"> <a routerLink="/">Freadit</a></span>
 
   <mat-form-field floatLabel="never">
     <mat-select placeholder="Subscriptions" disableRipple>
@@ -14,6 +14,8 @@
 
   <span class="example-fill-remaining-space"></span>
   <mat-icon class="example-icon">mail</mat-icon>
-  <mat-icon class="example-icon">create</mat-icon>
+  <a mat-button routerLink="/create" routerLinkActive="mat-accent">
+    <mat-icon class="example-icon">create</mat-icon>
+  </a>
   <mat-icon class="example-icon">person</mat-icon>
 </mat-toolbar>
