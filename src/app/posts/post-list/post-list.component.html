@@ -4,8 +4,11 @@
     <mat-expansion-panel-header id="">
       {{post.title}}
     </mat-expansion-panel-header>
+    <div class="post-image">
+      <img [src]="post.imagePath" [alt]="post.title">
+    </div>
      <p id="">{{post.content}}</p>
-     <mat-action-row id="">
+     <mat-action-row *ngIf="userIsAuthenticated && userId == post.creator">
        <a mat-button [routerLink]="['/edit', post.id]" color="primary" mat-button>EDIT</a>
        <button color="warn"
         mat-button
@@ -13,4 +16,10 @@
      </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+<mat-paginator
+    [length] = "totalPosts"
+    [pageSize]="postsPerPage"
+    [pageSizeOptions]="pageSizeOptions"
+    (page) = "onChangedPage($event)"
+    *ngIf="posts.length > 0"></mat-paginator>
 <p class="info-text mat-body-1" id="" *ngIf="posts.length == 0 && !isLoading">No Posts added yet</p>

@@ -1,21 +1,12 @@
-<mat-toolbar>
-  <span class="header-title"> <a routerLink="/">Freadit</a></span>
-
-  <mat-form-field floatLabel="never">
-    <mat-select placeholder="Subscriptions" disableRipple>
-      <mat-option value="1">f/cats</mat-option>
-      <mat-option value="2">f/news</mat-option>
-      <mat-option value="3">f/gifs</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <input type="text" />
-  <button>search</button>
-
-  <span class="example-fill-remaining-space"></span>
-  <mat-icon class="example-icon">mail</mat-icon>
-  <a mat-button routerLink="/create" routerLinkActive="mat-accent">
-    <mat-icon class="example-icon">create</mat-icon>
-  </a>
-  <mat-icon class="example-icon">person</mat-icon>
+<mat-toolbar color="primary">
+  <span id=""><a routerLink="/">MyMessages</a></span>
+  <span class="spacer"></span>
+  <ul id="">
+    <li *ngIf="userIsAuthenticated"><a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a></li>
+    <li *ngIf="!userIsAuthenticated"><a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a></li>
+    <li *ngIf="!userIsAuthenticated"><a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a></li>
+    <li *ngIf="userIsAuthenticated">
+        <button mat-button  (click)="onLogout()">Logout</button>
+      </li>
+  </ul>
 </mat-toolbar>
