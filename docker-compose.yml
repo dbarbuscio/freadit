@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mongo-server:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongouser
+      MONGO_INITDB_ROOT_PASSWORD: thisneedstochange
+
+  freadit-service:
+    build:
+      context: ./
+      dockerfile: Dockerfile.service
+    environment:
+      MONGO_ATLAS_PW: thisneedstochange
+      JWT_KEY: 'mysecretjwtkey'
+    depends_on:
+      - mongo-server
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+  freadit-angular:
+    build:
+      context: ./
+      dockerfile: Dockerfile.angular
+    volumes:
+      - ./dist/mean-course:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    environment:
+      JWT_KEY: 'mysecretjwtkey'
+    depends_on:
+      - freadit-service

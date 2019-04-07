@@ -7,21 +7,27 @@ const userRoutes = require('./routes/user')
 const app = express();
 
 
+function mongoConnect() {
+  mongoose.connect(
+    'mongodb://mongouser:' +
+    process.env.MONGO_ATLAS_PW +
+    '@mongo-server/node-angular?authSource=admin&retryWrites=true'
+    )
+    .then(() => {
+      console.log('Connected to Mongodb');
+    })
+    .catch((err) => {
+      console.log('MongoDB connection failed! Will retry in 5secs');
+      setTimeout(mongoConnect, 5000);
+    });
+}
 
-mongoose.connect(
-  'mongodb+srv://mongouser:' +
-  process.env.MONGO_ATLAS_PW +
-  '@cluster0-zbbim.mongodb.net/node-angular?retryWrites=true'
-  )
-  .then(() => {
-    console.log('Connected to Mongodb');
-  })
-  .catch(() => {
-    console.log('MongoDB connection failed!');
-  });
+mongoConnect();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false} ));
 app.use('/images', express.static(path.join('images')));
+
 
 app.use((req ,res, next) => {
   res.setHeader('Access-Control-Allow-Origin', "*");

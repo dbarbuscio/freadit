@@ -31,7 +31,7 @@ exports.userLogin = (req, res, next) => {
     .then(user => {
       if (!user) {
         return res.status(401).json({
-          message: 'Login failed!'
+          message: 'Could not find user!'
         });
       }
       fetchedUser = user;
